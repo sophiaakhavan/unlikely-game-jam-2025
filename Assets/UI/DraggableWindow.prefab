@@ -909,7 +909,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e88ddbe8f3044259b86c533b6668b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windowParent: {fileID: 1876399854800614763}
   canvas: {fileID: 0}
   resizeHandles:
   - {fileID: 239064764420969507}

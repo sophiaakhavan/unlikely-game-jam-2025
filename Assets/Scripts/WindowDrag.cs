@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class WindowDrag : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
-    [SerializeField] private GameObject windowParent;
     [SerializeField] private Canvas canvas;
+
+    private RectTransform rectTransform;
+    private GameObject windowParent;
+
     [SerializeField] private RectTransform[] resizeHandles;
     [SerializeField] private List<RectTransform> draggableAreas;
     private bool isResizing = false;
@@ -14,23 +17,21 @@ public class WindowDrag : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
     private Vector2 initialMousePosition;
     private Vector2 initialSize;
     private RectTransform activeResizeHandle;
-    private RectTransform rectTransform;
 
     private void Start()
     {
-        if(windowParent == null)
-        {
-            Debug.LogError("Window parent reference not set on window drag component!");
-        }
-
         rectTransform = GetComponent<RectTransform>();
-        if(rectTransform == null)
+        windowParent = transform.parent.gameObject;
+
+        // Find canvas in scene (if not already manually set)
+        Transform parentTransform = transform.parent;
+        while (parentTransform != null && canvas == null)
         {
-            Debug.LogError("Rect transform not set on window drag component!");
+            canvas = parentTransform.GetComponent<Canvas>();
+            parentTransform = parentTransform.parent;
         }
 
-        canvas = GetComponentInParent<Canvas>();
-        if(canvas == null)
+        if (canvas == null)
         {
             Debug.LogError("Couldn't find canvas in parent of draggable window!");
         }
@@ -53,7 +54,6 @@ public class WindowDrag : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
             rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
         }
     }
-
 
     public void OnPointerDown(PointerEventData eventData)
     {
