@@ -31,23 +31,43 @@ public class TransparentWindow : MonoBehaviour
     private static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS margins);
 
     const int GWL_EXSTYLE = -20;
-    const uint WS_EX_LAYERED = 0x00080000;
 
-    const uint LWA_COLORKEY = 0x00000001;
+    const uint WS_EX_LAYERED = 0x00080000;
+    const uint WS_EX_TRANSPARENT = 0x00000020;
+
+    private IntPtr hWnd;
 
     private void Start()
     {
 #if !UNITY_EDITOR
-        IntPtr hWnd = GetActiveWindow();
+        hWnd = GetActiveWindow();
 
         // Create "sheet of glass" effect
         MARGINS margins = new MARGINS { cxLeftWidth = -1 };
         DwmExtendFrameIntoClientArea(hWnd, ref margins);
 
-        SetWindowLong(hWnd, GWL_EXSTYLE, WS_EX_LAYERED);        // allow click-through (on transparent areas)
-        SetLayeredWindowAttributes(hWnd, 0, 0, LWA_COLORKEY);   // allow interaction 
+        SetWindowLong(hWnd, GWL_EXSTYLE, WS_EX_LAYERED | WS_EX_TRANSPARENT);
 #endif
-
         Application.runInBackground = true;
+    }
+
+    private void Update()
+    {
+        // Check if mouse is hovering over collider
+        SetClickThrough(Physics2D.OverlapPoint(Input.mousePosition) == null);
+    }
+
+    private void SetClickThrough(bool clickThrough)
+    {
+        if (clickThrough)
+        {
+            // Debug.Log("Click through");
+            SetWindowLong(hWnd, GWL_EXSTYLE, WS_EX_LAYERED | WS_EX_TRANSPARENT);
+        }
+        else
+        {
+            // Debug.Log("Not click through");
+            SetWindowLong(hWnd, GWL_EXSTYLE, WS_EX_LAYERED);
+        }
     }
 }
