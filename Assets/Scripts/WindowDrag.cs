@@ -7,7 +7,6 @@ public class WindowDrag : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
 {
     [SerializeField] private GameObject windowParent;
     [SerializeField] private Canvas canvas;
-    [SerializeField] private Image foregroundImage;
     [SerializeField] private RectTransform[] resizeHandles;
     [SerializeField] private List<RectTransform> draggableAreas;
     private bool isResizing = false;
@@ -22,10 +21,6 @@ public class WindowDrag : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
         if(windowParent == null)
         {
             Debug.LogError("Window parent reference not set on window drag component!");
-        }
-        if(foregroundImage == null)
-        {
-            Debug.LogError("Foreground image reference not set on window drag component!");
         }
 
         rectTransform = GetComponent<RectTransform>();
