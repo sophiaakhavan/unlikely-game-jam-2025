@@ -5,19 +5,19 @@ using UnityEngine.EventSystems;
 
 public class DragHandle : MonoBehaviour, IDragHandler
 {
-    [SerializeField] private Window parentWindow;
+    [SerializeField] private DraggableWindow m_parentWindow;
 
     void Start()
     {
         // Find parent window in scene (if not already manually set)
         Transform parentTransform = transform.parent;
-        while (parentTransform != null && parentWindow == null)
+        while (parentTransform != null && m_parentWindow == null)
         {
-            parentWindow = parentTransform.GetComponent<Window>();
+            m_parentWindow = parentTransform.GetComponent<DraggableWindow>();
             parentTransform = parentTransform.parent;
         }
 
-        if (parentWindow == null)
+        if (m_parentWindow == null)
         {
             Debug.LogError("Parent window reference not set!");
         }
@@ -25,6 +25,6 @@ public class DragHandle : MonoBehaviour, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        parentWindow.DragWindow(eventData.delta);
+        m_parentWindow.DragWindow(eventData.delta);
     }
 }

@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406d921de92ef814d80d323355b630dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  m_canvas: {fileID: 0}
 --- !u!1 &2994671441642555632
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,7 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af13bc9602c939a4c8151a788b0d5f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentWindow: {fileID: 2648038360898548166}
+  m_parentWindow: {fileID: 2648038360898548166}
 --- !u!1 &8155732951481346874
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +915,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
+      propertyPath: m_parentWindow
+      value: 
+      objectReference: {fileID: 2648038360898548166}
+    - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
       propertyPath: resizeCorner.x
       value: 1
       objectReference: {fileID: 0}
@@ -928,6 +932,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
       propertyPath: cornerQuadrant.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
+      propertyPath: m_cornerQuadrant.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
+      propertyPath: m_cornerQuadrant.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8061621674111704255, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
@@ -1041,6 +1053,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
+      propertyPath: m_parentWindow
+      value: 
+      objectReference: {fileID: 2648038360898548166}
+    - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
       propertyPath: resizeCorner.x
       value: 1
       objectReference: {fileID: 0}
@@ -1054,6 +1070,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
       propertyPath: cornerQuadrant.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
+      propertyPath: m_cornerQuadrant.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
+      propertyPath: m_cornerQuadrant.y
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8061621674111704255, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
@@ -1167,6 +1191,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
+      propertyPath: m_parentWindow
+      value: 
+      objectReference: {fileID: 2648038360898548166}
+    - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
       propertyPath: resizeCorner.x
       value: -1
       objectReference: {fileID: 0}
@@ -1180,6 +1208,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
       propertyPath: cornerQuadrant.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
+      propertyPath: m_cornerQuadrant.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
+      propertyPath: m_cornerQuadrant.y
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8061621674111704255, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
@@ -1293,6 +1329,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
+      propertyPath: m_parentWindow
+      value: 
+      objectReference: {fileID: 2648038360898548166}
+    - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
       propertyPath: resizeCorner.x
       value: -1
       objectReference: {fileID: 0}
@@ -1306,6 +1346,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
       propertyPath: cornerQuadrant.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
+      propertyPath: m_cornerQuadrant.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777868753707181667, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}
+      propertyPath: m_cornerQuadrant.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8061621674111704255, guid: 68fe4a1821e74b04583be8602d323d02, type: 3}

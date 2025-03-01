@@ -5,20 +5,20 @@ using UnityEngine.EventSystems;
 
 public class ResizeHandle : MonoBehaviour, IDragHandler
 {
-    [SerializeField] private Window parentWindow;
-    [SerializeField] private Vector2 cornerQuadrant; // EX: (1, 1) for top right
+    [SerializeField] private DraggableWindow m_parentWindow;
+    [SerializeField] private Vector2 m_cornerQuadrant; // EX: (1, 1) for top right
 
     void Start()
     {
         // Find parent window in scene (if not already manually set)
         Transform parentTransform = transform.parent;
-        while (parentTransform != null && parentWindow == null)
+        while (parentTransform != null && m_parentWindow == null)
         {
-            parentWindow = parentTransform.GetComponent<Window>();
+            m_parentWindow = parentTransform.GetComponent<DraggableWindow>();
             parentTransform = parentTransform.parent;
         }
 
-        if (parentWindow == null)
+        if (m_parentWindow == null)
         {
             Debug.LogError("Parent window reference not set!");
         }
@@ -26,6 +26,6 @@ public class ResizeHandle : MonoBehaviour, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        parentWindow.ResizeWindow(cornerQuadrant, eventData.delta);
+        m_parentWindow.ResizeWindow(m_cornerQuadrant, eventData.delta);
     }
 }
