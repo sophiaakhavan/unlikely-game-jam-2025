@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class DragHandle : MonoBehaviour, IDragHandler
 {
-    [SerializeField] private ApplicationWindow parentWindow;
+    [SerializeField] private Window parentWindow;
 
     void Start()
     {
@@ -13,7 +13,7 @@ public class DragHandle : MonoBehaviour, IDragHandler
         Transform parentTransform = transform.parent;
         while (parentTransform != null && parentWindow == null)
         {
-            parentWindow = parentTransform.GetComponent<ApplicationWindow>();
+            parentWindow = parentTransform.GetComponent<Window>();
             parentTransform = parentTransform.parent;
         }
 
@@ -25,6 +25,6 @@ public class DragHandle : MonoBehaviour, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        parentWindow.DragWindow(eventData);
+        parentWindow.DragWindow(eventData.delta);
     }
 }

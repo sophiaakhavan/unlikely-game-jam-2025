@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ApplicationWindow : MonoBehaviour, IPointerDownHandler
+public class Window : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private Canvas canvas;
-
+    
     private RectTransform rectTransform;
 
     void Start()
@@ -33,8 +35,16 @@ public class ApplicationWindow : MonoBehaviour, IPointerDownHandler
         transform.SetAsLastSibling();
     }
 
-    public void DragWindow(PointerEventData eventData) 
+    public void DragWindow(Vector2 delta) 
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        rectTransform.anchoredPosition += delta / canvas.scaleFactor;
+    }
+
+    public void ResizeWindow(Vector2 corner, Vector2 delta)
+    {
+        rectTransform.sizeDelta += (delta * corner) / canvas.scaleFactor;
+
+        // Offset position while resizing for anchor effect
+        rectTransform.anchoredPosition += (delta / 2.0f) / canvas.scaleFactor;
     }
 }
