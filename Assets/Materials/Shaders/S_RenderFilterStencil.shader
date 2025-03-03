@@ -1,4 +1,4 @@
-Shader "Custom/RenderStencil"
+Shader "Custom/RenderFilterStencil"
 {
     Properties
     {
@@ -16,7 +16,8 @@ Shader "Custom/RenderStencil"
         Pass
         {
             // Alpha blending
-            Blend SrcColor SrcAlpha
+            BlendOp Max
+            Blend SrcAlpha OneMinusSrcAlpha
 
             Stencil
             {
