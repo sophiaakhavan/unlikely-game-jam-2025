@@ -1,4 +1,4 @@
-Shader "Custom/RenderFilterStencil"
+Shader "Custom/FilterOverlapStencil"
 {
     Properties
     {

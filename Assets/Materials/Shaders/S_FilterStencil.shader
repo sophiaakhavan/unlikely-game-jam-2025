@@ -1,4 +1,4 @@
-Shader "Custom/RenderStencil"
+Shader "Custom/FilterStencil"
 {
     Properties
     {
