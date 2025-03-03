@@ -16,7 +16,7 @@ Shader "Custom/RenderStencil"
         Pass
         {
             // Alpha blending
-            Blend SrcColor SrcAlpha
+            Blend SrcAlpha SrcColor
 
             Stencil
             {
