@@ -2,11 +2,13 @@
 tags:
 position: -46,35
 ---
-Child: i hateeechyuuuu
--> i literally do not careee
-    i knew it
--> i hate u tooooo
-    wow
--> nooo dont say thattt
-    ill say it againn hoe
+Child: i sure am a child
+-> hi
+    //Jump thought bubble to Thought1
+    <<UpdateThought 1>>
+    Child: huh
+-> hewo
+    Child: wow
+-> hee
+    Child: hoo
 ===

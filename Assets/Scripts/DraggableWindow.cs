@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,12 +5,13 @@ public class DraggableWindow : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private Canvas m_canvas;
     [SerializeField] private Vector2 m_minSize;
+    [SerializeField] private DialogueController dialogueController;
     
-    private RectTransform rectTransform;
+    private RectTransform m_rectTransform;
 
     void Start()
     {
-        rectTransform = GetComponent<RectTransform>();
+        m_rectTransform = GetComponent<RectTransform>();
 
         // Find canvas in scene (if not already manually set)
         Transform parentTransform = transform.parent;
@@ -28,6 +27,7 @@ public class DraggableWindow : MonoBehaviour, IPointerDownHandler
         }
     }
 
+
     public void OnPointerDown(PointerEventData eventData)
     {
         // Move to bottom of parent's hierarchy (bring to front)
@@ -36,18 +36,18 @@ public class DraggableWindow : MonoBehaviour, IPointerDownHandler
 
     public void DragWindow(Vector2 delta) 
     {
-        rectTransform.anchoredPosition += delta / m_canvas.scaleFactor;
+        m_rectTransform.anchoredPosition += delta / m_canvas.scaleFactor;
     }
 
     public void ResizeWindow(Vector2 corner, Vector2 delta)
     {
-        rectTransform.sizeDelta += (delta * corner) / m_canvas.scaleFactor;
+        m_rectTransform.sizeDelta += (delta * corner) / m_canvas.scaleFactor;
 
         // Check to see if resize is below minimum dimensions
-        float compareToMinWidth = rectTransform.sizeDelta.x - m_minSize.x;
-        float compareToMinHeight = rectTransform.sizeDelta.y - m_minSize.y;
+        float compareToMinWidth = m_rectTransform.sizeDelta.x - m_minSize.x;
+        float compareToMinHeight = m_rectTransform.sizeDelta.y - m_minSize.y;
 
-        Vector2 clampedSize = rectTransform.sizeDelta;
+        Vector2 clampedSize = m_rectTransform.sizeDelta;
 
         // Don't allow resize below minimum width
         if (compareToMinWidth < 0)
@@ -63,9 +63,9 @@ public class DraggableWindow : MonoBehaviour, IPointerDownHandler
             clampedSize.y = m_minSize.y;
         }
 
-        rectTransform.sizeDelta = clampedSize;
+        m_rectTransform.sizeDelta = clampedSize;
 
         // Offset position while resizing for anchor effect
-        rectTransform.anchoredPosition += (delta / 2.0f) / m_canvas.scaleFactor;
+        m_rectTransform.anchoredPosition += (delta / 2.0f) / m_canvas.scaleFactor;
     }
 }

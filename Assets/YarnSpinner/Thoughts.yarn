@@ -1,0 +1,20 @@
+﻿title: Start
+tags:
+---
+
+...
+
+===
+
+title: Thought1
+tags:
+---
+
+<<set $redLine = "red text">>
+<<set $blueLine = "blue text">>
+<<SetThoughtLines "{$redLine}" "{$blueLine}">>
+
+//Default line:
+I wonder what it would be like to eat rocks
+
+===
