@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9014030573032053695}
   - component: {fileID: 8376307190330057419}
   - component: {fileID: 6777868753707181667}
+  - component: {fileID: 5880490378632110512}
   m_Layer: 5
   m_Name: ResizeHandle
   m_TagString: Untagged
@@ -90,3 +91,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_parentWindow: {fileID: 0}
   m_cornerQuadrant: {x: 0, y: 0}
+--- !u!65 &5880490378632110512
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693906286915794539}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20, y: 20, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

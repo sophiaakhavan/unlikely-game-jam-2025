@@ -5,7 +5,6 @@ public class DraggableWindow : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private Canvas m_canvas;
     [SerializeField] private Vector2 m_minSize;
-    [SerializeField] private DialogueController dialogueController;
     
     private RectTransform m_rectTransform;
 

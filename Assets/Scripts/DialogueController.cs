@@ -15,57 +15,57 @@ public struct ColorTextPair
 /// </summary>
 public class DialogueController : MonoBehaviour
 {
-    public GameObject windowPrefab;
-    [SerializeField] private DialogueRunner mainDialogueRunner;
-    [SerializeField] private DialogueRunner thoughtDialogueRunner;
-    [SerializeField] private List<ColorTextPair> thoughtTextObjectsList;
-    [SerializeField] private GameObject windowsParent;
-    [SerializeField] private GameObject mainWindow;
-    private Dictionary<string, GameObject> thoughtTextObjects; //string: color, val: text object
+    [SerializeField] private GameObject m_windowPrefab;
+    [SerializeField] private DialogueRunner m_mainDialogueRunner;
+    [SerializeField] private DialogueRunner m_thoughtDialogueRunner;
+    [SerializeField] private List<ColorTextPair> m_thoughtTextObjectsList;
+    [SerializeField] private GameObject m_windowsParent;
+    [SerializeField] private GameObject m_mainWindow;
+    private Dictionary<string, GameObject> m_thoughtTextObjects; //string: color, val: text object
 
     void Start()
     {
         //dialogueRunner = FindObjectOfType<DialogueRunner>();
-        mainDialogueRunner.AddCommandHandler<int>("UpdateThought", UpdateThoughtBubble);
-        mainDialogueRunner.AddCommandHandler<string>("CreateNewWindow", CreateNewWindow);
-        mainDialogueRunner.AddCommandHandler<int>("SetMainWindowSize", SetMainWindowSize);
-        thoughtDialogueRunner.AddCommandHandler<string, string, string, string, string, string, string>("SetThoughtLines", SetThoughtLines);
+        m_mainDialogueRunner.AddCommandHandler<int>("UpdateThought", UpdateThoughtBubble);
+        m_mainDialogueRunner.AddCommandHandler<string>("CreateNewWindow", CreateNewWindow);
+        m_mainDialogueRunner.AddCommandHandler<int>("SetMainWindowSize", SetMainWindowSize);
+        m_thoughtDialogueRunner.AddCommandHandler<string, string, string, string, string, string, string>("SetThoughtLines", SetThoughtLines);
 
-        thoughtTextObjects = new Dictionary<string, GameObject>();
+        m_thoughtTextObjects = new Dictionary<string, GameObject>();
 
         // Populate the thoughtTextObjects dictionary
-        foreach(ColorTextPair pair in thoughtTextObjectsList)
+        foreach(ColorTextPair pair in m_thoughtTextObjectsList)
         {
-            thoughtTextObjects[pair.color] = pair.textObject;
+            m_thoughtTextObjects[pair.color] = pair.textObject;
         }
     }
 
     private void CreateNewWindow(string color)
     {
-        if(windowsParent == null)
+        if(m_windowsParent == null)
         {
             Debug.LogError("Windows parent not assigned to Dialogue Controller! Failed to add new window.");
             return;
         }
-        if (windowPrefab == null)
+        if (m_windowPrefab == null)
         {
             Debug.LogError("Window prefab not assigned to Dialogue Controller! Failed to add new window.");
             return;
         }
 
-        GameObject newWindow = Instantiate(windowPrefab, windowsParent.transform);
+        GameObject newWindow = Instantiate(m_windowPrefab, m_windowsParent.transform);
         newWindow.transform.Find("Filter").GetComponent<Image>().material = Resources.Load<Material>("M_Mask_" + color);
         
     }
 
     private void SetMainWindowSize(int size)
     {
-        if(mainWindow == null)
+        if(m_mainWindow == null)
         {
             Debug.LogError("Main window not set! Failed to change main window size");
             return;
         }
-        RectTransform mainWindowRect = mainWindow.GetComponent<RectTransform>();
+        RectTransform mainWindowRect = m_mainWindow.GetComponent<RectTransform>();
         mainWindowRect.transform.localScale = new Vector3(size, size, mainWindowRect.transform.localScale.z);
     }
 
@@ -75,8 +75,8 @@ public class DialogueController : MonoBehaviour
     /// <param name="node"></param>
     private void UpdateThoughtBubble(int node)
     {
-        thoughtDialogueRunner.Stop();
-        thoughtDialogueRunner.StartDialogue("Thought" + node);
+        m_thoughtDialogueRunner.Stop();
+        m_thoughtDialogueRunner.StartDialogue("Thought" + node);
     }
 
     /// <summary>
@@ -107,18 +107,18 @@ public class DialogueController : MonoBehaviour
             string filterColor = filterLine.Key;
             string line = filterLine.Value;
 
-            if (thoughtTextObjects.ContainsKey(filterColor))
+            if (m_thoughtTextObjects.ContainsKey(filterColor))
             {
                 //Disable line texts that aren't specified
                 if (string.IsNullOrEmpty(line))
                 {
-                    thoughtTextObjects[filterColor].SetActive(false);
+                    m_thoughtTextObjects[filterColor].SetActive(false);
                 }
                 //Set the new text for this color text
                 else
                 {
-                    thoughtTextObjects[filterColor].SetActive(true);
-                    thoughtTextObjects[filterColor].GetComponent<TMPro.TextMeshProUGUI>().text = line;
+                    m_thoughtTextObjects[filterColor].SetActive(true);
+                    m_thoughtTextObjects[filterColor].GetComponent<TMPro.TextMeshProUGUI>().text = line;
                 }
             }
         }
