@@ -21,10 +21,18 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private List<ColorTextPair> m_thoughtTextObjectsList;
     [SerializeField] private GameObject m_windowsParent;
     [SerializeField] private GameObject m_mainWindow;
+    [SerializeField] private AudioClip m_continueAudioClip;
     private Dictionary<string, GameObject> m_thoughtTextObjects; //string: color, val: text object
+    private AudioSource m_audioSource;
 
     void Start()
     {
+        m_audioSource = GetComponent<AudioSource>();
+        if(m_audioSource == null)
+        {
+            Debug.LogError("Audio source not found on Dialogue Controller!");
+        }
+
         //dialogueRunner = FindObjectOfType<DialogueRunner>();
         m_mainDialogueRunner.AddCommandHandler<int>("UpdateThought", UpdateThoughtBubble);
         m_mainDialogueRunner.AddCommandHandler<string>("CreateNewWindow", CreateNewWindow);
@@ -38,6 +46,13 @@ public class DialogueController : MonoBehaviour
         {
             m_thoughtTextObjects[pair.color] = pair.textObject;
         }
+    }
+
+    public void OnContinue()
+    {
+        m_audioSource.Stop();
+        m_audioSource.clip = m_continueAudioClip;
+        m_audioSource.Play();
     }
 
     private void CreateNewWindow(string color)
