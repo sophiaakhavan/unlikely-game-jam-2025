@@ -7,10 +7,14 @@ public class DraggableWindow : MonoBehaviour, IPointerDownHandler
     [SerializeField] private Vector2 m_minSize;
     
     private RectTransform m_rectTransform;
+    private BoxCollider2D m_collider;
 
     virtual protected void Start()
     {
         m_rectTransform = GetComponent<RectTransform>();
+        m_collider = GetComponent<BoxCollider2D>();
+
+        m_collider.size = new Vector2(m_rectTransform.rect.width + 10.0f, m_rectTransform.rect.height + 10.0f);
 
         // Find canvas in scene (if not already manually set)
         Transform parentTransform = transform.parent;
@@ -40,6 +44,9 @@ public class DraggableWindow : MonoBehaviour, IPointerDownHandler
     virtual public void ResizeWindow(Vector2 corner, Vector2 delta)
     {
         ResizeRectTransform(m_rectTransform, corner, delta);
+
+        // Update collider box size
+        m_collider.size = new Vector2(m_rectTransform.rect.width + 10.0f, m_rectTransform.rect.height + 10.0f);
     }
 
     protected void DragRectTransform(RectTransform rectTransform, Vector2 delta)
