@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,6 +25,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private AudioClip m_continueAudioClip;
     private Dictionary<string, GameObject> m_thoughtTextObjects; //string: color, val: text object
     private AudioSource m_audioSource;
+    private Coroutine windowScaleCoroutine;
 
     void Start()
     {
@@ -36,7 +38,7 @@ public class DialogueController : MonoBehaviour
         //dialogueRunner = FindObjectOfType<DialogueRunner>();
         m_mainDialogueRunner.AddCommandHandler<int>("UpdateThought", UpdateThoughtBubble);
         m_mainDialogueRunner.AddCommandHandler<string>("CreateNewWindow", CreateNewWindow);
-        m_mainDialogueRunner.AddCommandHandler<int>("SetMainWindowSize", SetMainWindowSize);
+        m_mainDialogueRunner.AddCommandHandler<float>("SetMainWindowSize", ScaleMainWindow);
         m_thoughtDialogueRunner.AddCommandHandler<string, string, string, string, string, string, string>("SetThoughtLines", SetThoughtLines);
 
         m_thoughtTextObjects = new Dictionary<string, GameObject>();
@@ -73,15 +75,39 @@ public class DialogueController : MonoBehaviour
         
     }
 
-    private void SetMainWindowSize(int size)
+    public void ScaleMainWindow(float scale)
     {
         if(m_mainWindow == null)
         {
             Debug.LogError("Main window not set! Failed to change main window size");
             return;
         }
+
+        if (windowScaleCoroutine != null)
+        {
+            StopCoroutine(windowScaleCoroutine);
+        }
+        windowScaleCoroutine = StartCoroutine(LerpWindowScale(scale));
+    }
+
+    private IEnumerator LerpWindowScale(float scale)
+    {
         RectTransform mainWindowRect = m_mainWindow.GetComponent<RectTransform>();
-        mainWindowRect.transform.localScale = new Vector3(size, size, mainWindowRect.transform.localScale.z);
+        Vector3 initialScale = mainWindowRect.localScale;
+        Vector3 targetScale = new Vector3(scale, scale, initialScale.z);
+
+        float duration = 0.5f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            mainWindowRect.localScale = Vector3.Lerp(initialScale, targetScale, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null; // Wait for next frame
+        }
+
+        mainWindowRect.localScale = targetScale;
+        windowScaleCoroutine = null; // Reset coroutine
     }
 
     /// <summary>
