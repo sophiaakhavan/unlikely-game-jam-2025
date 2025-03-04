@@ -8,7 +8,7 @@ public class DraggableWindow : MonoBehaviour, IPointerDownHandler
     
     private RectTransform m_rectTransform;
 
-    void Start()
+    virtual protected void Start()
     {
         m_rectTransform = GetComponent<RectTransform>();
 
@@ -26,27 +26,36 @@ public class DraggableWindow : MonoBehaviour, IPointerDownHandler
         }
     }
 
-
     public void OnPointerDown(PointerEventData eventData)
     {
         // Move to bottom of parent's hierarchy (bring to front)
         transform.SetAsLastSibling();
     }
 
-    public void DragWindow(Vector2 delta) 
+    virtual public void DragWindow(Vector2 delta) 
     {
-        m_rectTransform.anchoredPosition += delta / m_canvas.scaleFactor;
+        DragRectTransform(m_rectTransform, delta);
     }
 
-    public void ResizeWindow(Vector2 corner, Vector2 delta)
+    virtual public void ResizeWindow(Vector2 corner, Vector2 delta)
     {
-        m_rectTransform.sizeDelta += (delta * corner) / m_canvas.scaleFactor;
+        ResizeRectTransform(m_rectTransform, corner, delta);
+    }
+
+    protected void DragRectTransform(RectTransform rectTransform, Vector2 delta)
+    {
+        rectTransform.anchoredPosition += delta / m_canvas.scaleFactor;
+    }
+
+    protected void ResizeRectTransform(RectTransform rectTransform, Vector2 corner, Vector2 delta)
+    {
+        rectTransform.sizeDelta += (delta * corner) / m_canvas.scaleFactor;
 
         // Check to see if resize is below minimum dimensions
-        float compareToMinWidth = m_rectTransform.sizeDelta.x - m_minSize.x;
-        float compareToMinHeight = m_rectTransform.sizeDelta.y - m_minSize.y;
+        float compareToMinWidth = rectTransform.sizeDelta.x - m_minSize.x;
+        float compareToMinHeight = rectTransform.sizeDelta.y - m_minSize.y;
 
-        Vector2 clampedSize = m_rectTransform.sizeDelta;
+        Vector2 clampedSize = rectTransform.sizeDelta;
 
         // Don't allow resize below minimum width
         if (compareToMinWidth < 0)
@@ -62,9 +71,9 @@ public class DraggableWindow : MonoBehaviour, IPointerDownHandler
             clampedSize.y = m_minSize.y;
         }
 
-        m_rectTransform.sizeDelta = clampedSize;
+        rectTransform.sizeDelta = clampedSize;
 
         // Offset position while resizing for anchor effect
-        m_rectTransform.anchoredPosition += (delta / 2.0f) / m_canvas.scaleFactor;
+        rectTransform.anchoredPosition += (delta / 2.0f) / m_canvas.scaleFactor;
     }
 }

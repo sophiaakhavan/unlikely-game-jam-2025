@@ -16,7 +16,7 @@ Shader "Custom/FilterStencil"
         Pass
         {
             // Alpha blending
-            Blend SrcAlpha SrcColor
+            Blend SrcAlpha DstAlpha
 
             Stencil
             {

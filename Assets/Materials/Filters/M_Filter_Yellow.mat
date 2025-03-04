@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Filter_Yellow
-  m_Shader: {fileID: 4800000, guid: 34efa4b2c21ff124281e6f99cc2d4c77, type: 3}
+  m_Shader: {fileID: 4800000, guid: dd32d4d0b644f44478d87585503824ca, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

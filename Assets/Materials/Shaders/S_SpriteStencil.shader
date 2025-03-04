@@ -33,7 +33,6 @@ Shader "Custom/SpriteStencil"
             #include "UnityCG.cginc"
 
             uniform sampler2D _MainTex;
-            fixed4 _Color;
 
 			struct appdata
 			{
