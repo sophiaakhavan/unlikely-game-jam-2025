@@ -2,7 +2,8 @@
   "projectFileVersion": 2,
   "sourceFiles": [
     "Child.yarn",
-    "Thoughts.yarn"
+    "Thoughts.yarn",
+    "Main.yarn"
   ],
   "excludeFiles": [
     "**/*~/*"

@@ -1,0 +1,23 @@
+﻿title: Opening
+---
+<<declare $P = "You">>
+<<declare $C = "Kevin">>
+
+{$P}: (I don’t know what to say. I didn’t even know this was an issue until today.) 
+{$P}: {$C}. Do you know what this is?
+{$C}: ...
+{$P}: (How do I talk about something like this?)
+{$P}: It says you’re in danger of failing eleventh grade.
+{$C}: ...
+{$P}: You said if I let you dye your hair, you would score well this year. What happened to that?
+{$C}: I guess life got in the way.
+{$P}: What do you mean, life got in the way? You’re a student. Your only job is to study.
+
+<<jump Scene1>>
+===
+
+title: Scene1
+---
+{$C}: School isn’t just studying.
+
+===
