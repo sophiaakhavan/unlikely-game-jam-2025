@@ -67,12 +67,12 @@ position: 155,164
     {$C}: And I said, I can’t work with them. There’s nothing to work with.
     <<SetThoughtLines "How many more times do I have to explain this? God.">>
     {$C}: I can’t just go in and tell them to change my grade. That’s not how it works.
+    <<SetThoughtLines "All they care about is getting those stupid standardized testing scores up.">>
     <<SetCharacterAudio None>>
     {$P}: (I’m not stupid. He shouldn’t be acting like this.)
     <<SetCharacterAudio Parent>>
     {$P}: But you can talk to them. They have visiting times, right? Go see them then.
-
-    <<SetThoughtLines "All they care about is getting those stupid standardized testing scores up. They don’t actually care about how we do in their classes. They’re no help at all.">>
+    <<SetThoughtLines "They don’t actually care about how we do in their classes. They’re no help at all.">>
     <<SetCharacterAudio Child>>
     {$C}: They don’t really have the time to talk with students about things like this.
 
