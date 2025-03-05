@@ -116,7 +116,6 @@ namespace Yarn.Unity
 
         private void Awake()
         {
-            click = GetComponent<AudioSource>();
             canvasGroup.alpha = 0;
             canvasGroup.blocksRaycasts = false;
         }
@@ -128,14 +127,13 @@ namespace Yarn.Unity
 
         public override void DismissLine(Action onDismissalComplete)
         {
+            click.Play();
             currentLine = null;
             StartCoroutine(DismissLineInternal(onDismissalComplete));
         }
 
         private IEnumerator DismissLineInternal(Action onDismissalComplete)
         {
-            //if (continueButton) click.Play();
-
             // Disable interaction temporarily while dismissing the line
             var interactable = canvasGroup.interactable;
             canvasGroup.interactable = false;
@@ -354,8 +352,11 @@ namespace Yarn.Unity
                         !lineText.text[lineText.maxVisibleCharacters - 1].Equals('!'))
                     {
                         // If not on punctuation, play randomly pitched 'dialgue' sfx
-                        //sound.pitch = UnityEngine.Random.Range(1f, 1.2f);
-                        //sound.Play();
+                        if (sound.clip != null)
+                        {
+                            sound.pitch = UnityEngine.Random.Range(2f, 2.2f);
+                            sound.Play();
+                        }
                     }
                 }
             }
