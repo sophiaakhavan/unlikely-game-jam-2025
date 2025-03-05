@@ -354,7 +354,7 @@ namespace Yarn.Unity
                         // If not on punctuation, play randomly pitched 'dialgue' sfx
                         if (sound.clip != null)
                         {
-                            sound.pitch = UnityEngine.Random.Range(2f, 2.2f);
+                            sound.pitch = UnityEngine.Random.Range(1f, 1.2f);
                             sound.Play();
                         }
                     }
