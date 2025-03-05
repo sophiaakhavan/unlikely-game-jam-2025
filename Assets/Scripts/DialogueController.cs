@@ -70,7 +70,7 @@ public class DialogueController : MonoBehaviour
 
     private void EnableFilter(string color)
     {
-        if (m_filterWindowDict.ContainsKey(color))
+        if (m_filterWindowDict.ContainsKey(color) && !m_filterWindowDict[color].activeInHierarchy)
         {
             m_filterWindowDict[color].SetActive(true);
             // TODO: Call resize function?

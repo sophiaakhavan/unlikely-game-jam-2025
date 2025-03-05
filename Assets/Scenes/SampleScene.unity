@@ -352,7 +352,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7b5aa4a3438e94e2ca42e3ec6954c698, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1896,9 +1896,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3877261481669389889, guid: 8d9036c02096bd44888737edde79b5ae, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6905176359945392637, guid: 8d9036c02096bd44888737edde79b5ae, type: 3}
       propertyPath: m_Name
       value: OptionListView
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905176359945392637, guid: 8d9036c02096bd44888737edde79b5ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7778400232103902701, guid: 8d9036c02096bd44888737edde79b5ae, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3357,9 +3365,6 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2872002685972952051, guid: 1a9f54bb4c48848b1ae69960b3b1c80f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 578666379}
-    - targetCorrespondingSourceObject: {fileID: 2872002685972952051, guid: 1a9f54bb4c48848b1ae69960b3b1c80f, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1816437760}
     - targetCorrespondingSourceObject: {fileID: 2872002685972952051, guid: 1a9f54bb4c48848b1ae69960b3b1c80f, type: 3}
       insertIndex: -1
@@ -3379,6 +3384,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2872002685972952051, guid: 1a9f54bb4c48848b1ae69960b3b1c80f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1833887103}
+    - targetCorrespondingSourceObject: {fileID: 2872002685972952051, guid: 1a9f54bb4c48848b1ae69960b3b1c80f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 578666379}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a9f54bb4c48848b1ae69960b3b1c80f, type: 3}
 --- !u!224 &1212206679 stripped
@@ -4089,7 +4097,7 @@ MonoBehaviour:
     textObject: {fileID: 69995389}
   m_childAudio: {fileID: 8300000, guid: 7b5aa4a3438e94e2ca42e3ec6954c698, type: 3}
   m_parentAudio: {fileID: 8300000, guid: 3d208f222ada5488bb429b298449918f, type: 3}
-  m_customLineView: {fileID: 0}
+  m_customLineView: {fileID: 1244235262}
   m_mainWindow: {fileID: 1212206680}
 --- !u!1 &1707857456
 GameObject:
@@ -4553,7 +4561,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c71195ba21b1143d786587f1d7e07a5c, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
