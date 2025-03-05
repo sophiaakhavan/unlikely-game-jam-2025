@@ -447,11 +447,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &69995389 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9133927765792769236, guid: b678caaa788a0b148adc4c62493127e8, type: 3}
-  m_PrefabInstance: {fileID: 1833887102}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &131642493 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9133927765792769236, guid: b678caaa788a0b148adc4c62493127e8, type: 3}
@@ -4149,8 +4144,6 @@ MonoBehaviour:
     textObject: {fileID: 1955262576}
   - color: Yellow
     textObject: {fileID: 1767226451}
-  - color: White
-    textObject: {fileID: 69995389}
   m_childAudio: {fileID: 8300000, guid: 7b5aa4a3438e94e2ca42e3ec6954c698, type: 3}
   m_parentAudio: {fileID: 8300000, guid: 3d208f222ada5488bb429b298449918f, type: 3}
   m_customLineView: {fileID: 1138203645}
@@ -4580,7 +4573,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2084018769274975596, guid: b678caaa788a0b148adc4c62493127e8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b678caaa788a0b148adc4c62493127e8, type: 3}
@@ -5077,7 +5071,7 @@ MonoBehaviour:
   dialogueViews:
   - {fileID: 1138203645}
   - {fileID: 1202040722}
-  startNode: Opening
+  startNode: Scene7
   startAutomatically: 1
   runSelectedOptionAsLine: 0
   lineProvider: {fileID: 0}

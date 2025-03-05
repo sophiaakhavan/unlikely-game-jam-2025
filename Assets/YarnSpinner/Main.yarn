@@ -434,12 +434,8 @@ position: 155,164
 {$C}: I don’t know...
 {$C}: I don’t want to decide right now. I know I’m graduating soon, but... don’t I still have time left?
 
-<<EnableFilter "Green">>
-<<EnableFilter "Red">>
-<<EnableFilter "Blue">>
-
 <<SetThoughtLines "">>
--> No matter what decision you make, I’ll promise to hear it out.
+-> No matter what decision you make, I’ll support you.
     <<SetThoughtLines "" "" "I just want her to understand. I just want her to support me...">>
     <<SetCharacterAudio None>>
     {$C}: ...
@@ -455,6 +451,11 @@ position: 155,164
     <<SetThoughtLines "" "" "" "" "" "" "I’ve wanted to hear these words so many times.">>
     <<SetCharacterAudio Child>>
     {$C}: ...Do you mean it?
+
+    <<EnableFilter "Green">>
+    <<EnableFilter "Red">>
+    <<EnableFilter "Blue">>
+
     <<SetCharacterAudio Parent>>
     {$P}: (That’s all any parent wants for their child.)
 ===
