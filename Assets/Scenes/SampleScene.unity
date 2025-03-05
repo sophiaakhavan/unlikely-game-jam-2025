@@ -5071,7 +5071,7 @@ MonoBehaviour:
   dialogueViews:
   - {fileID: 1138203645}
   - {fileID: 1202040722}
-  startNode: Scene7
+  startNode: Opening
   startAutomatically: 1
   runSelectedOptionAsLine: 0
   lineProvider: {fileID: 0}
