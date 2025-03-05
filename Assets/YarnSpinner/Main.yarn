@@ -18,6 +18,10 @@
 
 title: Scene1
 ---
+<<EnableFilter "Red">>
+
+<<SetThoughtLines "Why is she blowing up at me? People get those letters all the time.">>
 {$C}: School isn’t just studying.
+
 
 ===

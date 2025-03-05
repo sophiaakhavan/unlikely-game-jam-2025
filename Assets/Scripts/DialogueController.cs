@@ -2,13 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Yarn;
 using Yarn.Unity;
 
 [System.Serializable]
 public struct ColorTextPair
 {
-    public string color; // filter color (ie "Red", "Blue")
-    public GameObject textObject; // corresponding text object
+    public string color;            // filter color (ie "Red", "Blue")
+    public GameObject textObject;   // corresponding text object
+}
+
+[System.Serializable]
+public struct ColorWindowPair
+{
+    public string color;            // filter color (ie "Red", "Blue")
+    public GameObject window;       // corresponding filter window object
 }
 
 /// <summary>
@@ -16,63 +24,88 @@ public struct ColorTextPair
 /// </summary>
 public class DialogueController : MonoBehaviour
 {
-    [SerializeField] private GameObject m_windowPrefab;
-    [SerializeField] private DialogueRunner m_mainDialogueRunner;
-    [SerializeField] private DialogueRunner m_thoughtDialogueRunner;
-    [SerializeField] private List<ColorTextPair> m_thoughtTextObjectsList;
-    [SerializeField] private GameObject m_windowsParent;
+    [SerializeField] private List<ColorWindowPair> m_filterWindows;
+    [SerializeField] private List<ColorTextPair> m_thoughtTextObjs;
+
+    private Dictionary<string, GameObject> m_filterWindowDict;      // string: color, val: filter window obj
+    private Dictionary<string, GameObject> m_thoughtTextObjDict;    // string: color, val: text object
+
+    [SerializeField] private AudioClip m_childAudio;
+    [SerializeField] private AudioClip m_parentAudio;
+    [SerializeField] private CustomLineView m_customLineView; // main dialogue system line view
+
     [SerializeField] private GameObject m_mainWindow;
-    [SerializeField] private AudioClip m_continueAudioClip;
-    private Dictionary<string, GameObject> m_thoughtTextObjects; //string: color, val: text object
-    private AudioSource m_audioSource;
     private Coroutine windowScaleCoroutine;
+
+    private DialogueRunner m_dialogueRunner;
 
     void Start()
     {
-        m_audioSource = GetComponent<AudioSource>();
-        if(m_audioSource == null)
+        m_dialogueRunner = FindObjectOfType<DialogueRunner>();
+
+        m_dialogueRunner.AddCommandHandler<string>("EnableFilter", EnableFilter);
+        m_dialogueRunner.AddCommandHandler<string>("DisableFilter", DisableFilter);
+        m_dialogueRunner.AddCommandHandler<string, string, string, string, string, string, string>("SetThoughtLines", SetThoughtLines);
+
+        m_dialogueRunner.AddCommandHandler<string>("SetCharacterAudio", SetCharacterAudio);
+        m_dialogueRunner.AddCommandHandler<float>("SetMainWindowSize", ScaleMainWindow);
+
+
+
+        m_filterWindowDict = new Dictionary<string, GameObject>();
+        m_thoughtTextObjDict = new Dictionary<string, GameObject>();
+
+        // Populate the thought text objects dictionary
+        foreach(ColorTextPair pair in m_thoughtTextObjs)
         {
-            Debug.LogError("Audio source not found on Dialogue Controller!");
+            m_thoughtTextObjDict[pair.color] = pair.textObject;
         }
 
-        //dialogueRunner = FindObjectOfType<DialogueRunner>();
-        m_mainDialogueRunner.AddCommandHandler<int>("UpdateThought", UpdateThoughtBubble);
-        m_mainDialogueRunner.AddCommandHandler<string>("CreateNewWindow", CreateNewWindow);
-        m_mainDialogueRunner.AddCommandHandler<float>("SetMainWindowSize", ScaleMainWindow);
-        m_thoughtDialogueRunner.AddCommandHandler<string, string, string, string, string, string, string>("SetThoughtLines", SetThoughtLines);
-
-        m_thoughtTextObjects = new Dictionary<string, GameObject>();
-
-        // Populate the thoughtTextObjects dictionary
-        foreach(ColorTextPair pair in m_thoughtTextObjectsList)
+        // Poplate the filter window objects dictionary
+        foreach (ColorWindowPair pair in m_filterWindows)
         {
-            m_thoughtTextObjects[pair.color] = pair.textObject;
+            m_filterWindowDict[pair.color] = pair.window;
         }
     }
 
-    public void OnContinue()
+    private void EnableFilter(string color)
     {
-        m_audioSource.Stop();
-        m_audioSource.clip = m_continueAudioClip;
-        m_audioSource.Play();
+        if (m_filterWindowDict.ContainsKey(color))
+        {
+            m_filterWindowDict[color].SetActive(true);
+            // TODO: Call resize function?
+            // TODO: Set position?
+        }
     }
 
-    private void CreateNewWindow(string color)
+    private void DisableFilter(string color)
     {
-        if(m_windowsParent == null)
+        if (m_filterWindowDict.ContainsKey(color))
         {
-            Debug.LogError("Windows parent not assigned to Dialogue Controller! Failed to add new window.");
-            return;
+            m_filterWindowDict[color].SetActive(false);
+            // TODO: Call resize function?
         }
-        if (m_windowPrefab == null)
-        {
-            Debug.LogError("Window prefab not assigned to Dialogue Controller! Failed to add new window.");
-            return;
-        }
+    }
 
-        GameObject newWindow = Instantiate(m_windowPrefab, m_windowsParent.transform);
-        newWindow.transform.Find("Filter").GetComponent<Image>().material = Resources.Load<Material>("M_Mask_" + color);
-        
+    private void SetCharacterAudio(string character)
+    {
+        if (m_customLineView == null)
+        {
+            Debug.LogError("Custom line view not found on main dialogue system! Failed to set character audio.");
+            return;
+        }
+        if (character == "Parent")
+        {
+            m_customLineView.sound.clip = m_parentAudio;
+        }
+        else if (character == "Child")
+        {
+            m_customLineView.sound.clip = m_childAudio;
+        }
+        else if (character == "None")
+        {
+            m_customLineView.sound.clip = null;
+        }
     }
 
     public void ScaleMainWindow(float scale)
@@ -111,17 +144,7 @@ public class DialogueController : MonoBehaviour
     }
 
     /// <summary>
-    /// Have thought dialogue jump to a node. Called from main dialogue
-    /// </summary>
-    /// <param name="node"></param>
-    private void UpdateThoughtBubble(int node)
-    {
-        m_thoughtDialogueRunner.Stop();
-        m_thoughtDialogueRunner.StartDialogue("Thought" + node);
-    }
-
-    /// <summary>
-    /// Set the thought text and enable any of the text lines for the different colors
+    /// Set the thought text for the different colors.
     /// </summary>
     /// <param name="redLine"></param>
     /// <param name="blueLine"></param>
@@ -148,21 +171,19 @@ public class DialogueController : MonoBehaviour
             string filterColor = filterLine.Key;
             string line = filterLine.Value;
 
-            if (m_thoughtTextObjects.ContainsKey(filterColor))
+            if (m_thoughtTextObjDict.ContainsKey(filterColor))
             {
-                //Disable line texts that aren't specified
+                // Line texts that aren't specified should default to "..."
                 if (string.IsNullOrEmpty(line))
                 {
-                    m_thoughtTextObjects[filterColor].SetActive(false);
+                    m_thoughtTextObjDict[filterColor].GetComponent<TMPro.TextMeshProUGUI>().text = "...";
                 }
-                //Set the new text for this color text
+                // Set the new text for this color text
                 else
                 {
-                    m_thoughtTextObjects[filterColor].SetActive(true);
-                    m_thoughtTextObjects[filterColor].GetComponent<TMPro.TextMeshProUGUI>().text = line;
+                    m_thoughtTextObjDict[filterColor].GetComponent<TMPro.TextMeshProUGUI>().text = line;
                 }
             }
         }
     }
-
 }

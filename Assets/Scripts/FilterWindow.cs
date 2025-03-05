@@ -15,11 +15,12 @@ public class FilterWindow : DraggableWindow
         if (m_filter == null)
         {
             Debug.LogError("Filter reference not set!");
+            return;
         }
-
         if (m_filterParent == null)
         {
             Debug.LogError("Filter parent reference not set!");
+            return;
         }
 
         // This parent is above the game window in hierarchy (for render order)
