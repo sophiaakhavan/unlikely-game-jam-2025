@@ -294,6 +294,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -8.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7962907653219479538, guid: 27ea12ee652bcea418dec7d69bd6b786, type: 3}
+      propertyPath: m_text
+      value: 'red_filter.exe
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 8734074076348525865, guid: 27ea12ee652bcea418dec7d69bd6b786, type: 3}
       propertyPath: m_filterParent
       value: 
@@ -2816,6 +2822,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -8.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7962907653219479538, guid: 27ea12ee652bcea418dec7d69bd6b786, type: 3}
+      propertyPath: m_text
+      value: 'blue_filter.exe
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 8734074076348525865, guid: 27ea12ee652bcea418dec7d69bd6b786, type: 3}
       propertyPath: m_filterParent
       value: 
@@ -3373,6 +3385,10 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 910
       objectReference: {fileID: 0}
+    - target: {fileID: 8940820660340062826, guid: 1a9f54bb4c48848b1ae69960b3b1c80f, type: 3}
+      propertyPath: m_text
+      value: viewport.exe
+      objectReference: {fileID: 0}
     - target: {fileID: 8994360558398439628, guid: 1a9f54bb4c48848b1ae69960b3b1c80f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3603,6 +3619,12 @@ PrefabInstance:
     - target: {fileID: 7946496064347411796, guid: 27ea12ee652bcea418dec7d69bd6b786, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7962907653219479538, guid: 27ea12ee652bcea418dec7d69bd6b786, type: 3}
+      propertyPath: m_text
+      value: 'green_filter.exe
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 8734074076348525865, guid: 27ea12ee652bcea418dec7d69bd6b786, type: 3}
       propertyPath: m_filterParent
