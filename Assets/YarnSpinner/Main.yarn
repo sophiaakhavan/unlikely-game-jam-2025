@@ -22,6 +22,13 @@ title: Scene1
 
 <<SetThoughtLines "Why is she blowing up at me? People get those letters all the time.">>
 {$C}: School isn’t just studying.
+-> That’s no excuse.
+    <<SetThoughtLines>> // To reset thoughts to "..."
+    {$P}: (Saying other kids get them too as if that excuses anything…)
+    {$P}: (So he wants to fail like the other kids, is that it?)
+    {$P}: The point of school is to graduate. You can do other things in school, but why would you ignore your grades like this?
+    {$C}: I wasn’t ignoring anything.
 
-
+    <<SetThoughtLines "It’s just a warning. Can’t she stop yelling so loudly?">>
+    {$C}: I did most of my assignments. My teachers grade really harshly this semester.
 ===
