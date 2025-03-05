@@ -50,8 +50,6 @@ public class DialogueController : MonoBehaviour
         m_dialogueRunner.AddCommandHandler<string>("SetCharacterAudio", SetCharacterAudio);
         m_dialogueRunner.AddCommandHandler<float>("SetMainWindowSize", ScaleMainWindow);
 
-
-
         m_filterWindowDict = new Dictionary<string, GameObject>();
         m_thoughtTextObjDict = new Dictionary<string, GameObject>();
 
@@ -72,7 +70,7 @@ public class DialogueController : MonoBehaviour
     {
         if (m_filterWindowDict.ContainsKey(color) && !m_filterWindowDict[color].activeInHierarchy)
         {
-            m_filterWindowDict[color].SetActive(true);
+            m_filterWindowDict[color].GetComponent<FilterWindow>().EnableWindow();
             // TODO: Call resize function?
             // TODO: Set position?
         }
@@ -82,7 +80,7 @@ public class DialogueController : MonoBehaviour
     {
         if (m_filterWindowDict.ContainsKey(color) && m_filterWindowDict[color].activeInHierarchy)
         {
-            m_filterWindowDict[color].SetActive(false);
+            m_filterWindowDict[color].GetComponent<FilterWindow>().DisableWindow();
             // TODO: Call resize function?
         }
     }

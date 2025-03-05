@@ -38,4 +38,16 @@ public class FilterWindow : DraggableWindow
         base.ResizeWindow(corner, delta);
         ResizeRectTransform(m_filter.GetComponent<RectTransform>(), corner, delta);
     }
+
+    public void EnableWindow()
+    {
+        gameObject.SetActive(true);
+        m_filter.SetActive(true);
+    }
+
+    public void DisableWindow()
+    {
+        gameObject.SetActive(false);
+        m_filter.SetActive(false) ;
+    }
 }
