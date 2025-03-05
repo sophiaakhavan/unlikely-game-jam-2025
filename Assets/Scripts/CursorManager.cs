@@ -15,7 +15,7 @@ public class CursorManager : MonoBehaviour
 
     public void SetCursorResize()
     {
-        Cursor.SetCursor(m_cursorResize, Vector2.zero, CursorMode.ForceSoftware);
+        Cursor.SetCursor(m_cursorResize, new Vector2(24.0f, 24.0f), CursorMode.ForceSoftware);
     }
 
     public void SetCursorNormal()

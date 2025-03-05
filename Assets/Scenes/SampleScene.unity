@@ -847,8 +847,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6ce7ec767a44f3abf8ba0d181881f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_cursorNormal: {fileID: 2800000, guid: 8ea795c067613354898068091ffc7130, type: 3}
-  m_cursorResize: {fileID: 2800000, guid: 2a2b4775272c890448e1bd6239fdfc84, type: 3}
+  m_cursorNormal: {fileID: 2800000, guid: 390dbe3b24fdc7e489ff87c02527757f, type: 3}
+  m_cursorResize: {fileID: 2800000, guid: 9fa0b0c4e5e12f94e96e06650f8578b5, type: 3}
 --- !u!4 &342936067
 Transform:
   m_ObjectHideFlags: 0
