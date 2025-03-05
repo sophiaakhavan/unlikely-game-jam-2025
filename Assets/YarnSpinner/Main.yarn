@@ -43,34 +43,37 @@ position: 155,164
     {$P}: The point of school is to graduate. You can do other things in school, but why would you ignore your grades like this?
     <<SetCharacterAudio Child>>
     {$C}: I wasn’t ignoring anything.
-
     <<SetThoughtLines "It’s just a warning. Can’t she stop yelling so loudly?">>
     {$C}: I did most of my assignments. My teachers grade really harshly this semester.
-
+    <<SetCharacterAudio Parent>>
     {$P}: That’s why I told you to give those gifts to your teachers, didn’t I? Your teachers are people too, don’t blame everything on them.
+    <<SetCharacterAudio None>>
     {$P}: (If he had just listened to me, maybe we could have at least smoothed it over a little bit.)
-
+    <<SetCharacterAudio Child>>
     <<SetThoughtLines "Again with this gift-giving shit.">>
     {$C}: ...So it’s my fault, not theirs?
     <<SetThoughtLines "She always blames everything on me.">>
-
+    <<SetCharacterAudio Parent>>
     {$P}: I never said that. Don’t take words out of my mouth.
 
     <<SetThoughtLines "Why does she always do this? It’s always me, me, me.">>
+    <<SetCharacterAudio Child>>
     {$C}: I wasn’t even trying to be aggressive, mom.
-
+    <<SetCharacterAudio None>>
     {$P}: ...
-
+    <<SetCharacterAudio Parent>>
     {$P}: I think you should try to work with your teachers. They’re the ones in charge.
-
+    <<SetCharacterAudio Child>>
     {$C}: And I said, I can’t work with them. There’s nothing to work with.
     <<SetThoughtLines "How many more times do I have to explain this? God.">>
     {$C}: I can’t just go in and tell them to change my grade. That’s not how it works.
-
+    <<SetCharacterAudio None>>
     {$P}: (I’m not stupid. He shouldn’t be acting like this.)
+    <<SetCharacterAudio Parent>>
     {$P}: But you can talk to them. They have visiting times, right? Go see them then.
 
     <<SetThoughtLines "All they care about is getting those stupid standardized testing scores up. They don’t actually care about how we do in their classes. They’re no help at all.">>
+    <<SetCharacterAudio Child>>
     {$C}: They don’t really have the time to talk with students about things like this.
 
     <<jump Scene2>>
@@ -84,44 +87,67 @@ position: 155,164
 <<EnableFilter "Green">>
 <<EnableFilter "Blue">>
 
+<<SetCharacterAudio None>>
 {$P}: (What could he be thinking? I didn’t know he disliked his teachers that much.)
 <<SetThoughtLines "" "I don’t want to talk to them all by myself." "They’re always so dismissive of us. Why can’t I have someone who can just talk to them for me?" "" "I wish my teachers would just understand that I’m not ignoring the homework because I want to.">>
 -> Try your counselors.
+    <<SetCharacterAudio Parent>>
     {$P}: What about your counselors? I heard they’re supposed to navigate this kind of thing with teachers. Have you gone to them?
+    <<SetCharacterAudio None>>
     {$P}: (I looked it up online. They have counselors, visiting hours for teachers, and even something called a “schedule coordinator”.)
     {$P}: (It’s unbelievable just how many people are hired just to make sure they do well.)
+    <<SetCharacterAudio Child>>
     {$C}: Nobody goes to them. They’re basically useless.
+    <<SetCharacterAudio Parent>>
     {$P}: So that means you haven’t.
+    <<SetCharacterAudio None>>
     {$P}: (Even though it’s free no matter what. Even though it’s right there.)
+    <<SetCharacterAudio Parent>>
     {$P}: This is what our taxes pay for, and you don’t use them?
     <<SetThoughtLines "" "" "Why can’t she just take it as the truth?">>
+    <<SetCharacterAudio Child>>
     {$C}: Because they don’t do anything except just tell you what classes you have left to take, seriously. They’re just a glorified spreadsheet.
+    <<SetCharacterAudio None>>
     {$P}: (He doesn’t understand. They’re hired for the sole purpose of helping him.)
     {$P}: (We would have had to pay a month’s salary for someone like that.)
+    <<SetCharacterAudio Parent>>
     {$P}: But they’re paid to help you. So if you mention your situation to them and say that you need to graduate, and explain everything well–
     <<SetThoughtLines "" "" "She wouldn’t get it. She didn’t go to school here.">>
+    <<SetCharacterAudio Child>>
     {$C}: No, I’m saying—ugh.
+    <<SetCharacterAudio Parent>>
     {$P}: I’m trying to fix the situation. Don’t give me that look.
+    <<SetCharacterAudio None>>
     {$P}: (School is school. What does he mean, I wouldn’t get it?)
     {$P}: (It hasn’t been that long. I still remember high school.)
     <<SetThoughtLines "" "" "They only care if some parent comes in yelling about their precious goddamn kid and threatens them.">>
+    <<SetCharacterAudio Child>>
     {$C}: The counselors won’t help me. They don’t care about students.
     <<SetThoughtLines "" "" "And she can’t do that like those other parents can.">>
+    <<SetCharacterAudio None>>
     {$C}: ...
     {$P}: (Does he want me to try to talk to them?)
+    <<SetCharacterAudio Parent>>
     {$P}: You know, when I nearly failed a class, I had to beg the teacher for a month. I had to beg basically on my knees, but he passed me in the end. Persistence matters too.
     {$P}: So book a meeting with the counselors. We can talk to them as many times as it takes until we fix this.
     <<SetThoughtLines "" "" "Why is it always me? Why do I have to deal with this?">>
+    <<SetCharacterAudio Child>>
     {$C}: No, you mean I’ll talk to them. Right?
     <<jump Scene3>>
 -> Don't be scared.
+    <<SetCharacterAudio Parent>>
     {$P}: You don’t have to be afraid of your teachers. Even if they seem cold, they’re supposed to help you.
+    <<SetCharacterAudio Child>>
     {$C}: ...That’s not what I’m worried about.
+    <<SetCharacterAudio None>>
     {$P}: ...
     <<jump Scene2>>
 -> Explain everything to your teachers.
+    <<SetCharacterAudio Parent>>
     {$P}: Can you discuss your situation with them ahead of time? Teachers are more understanding if you can explain the circumstances.
+    <<SetCharacterAudio Child>>
     {$C}: I just told you that they don’t have the time to talk about things like that.
+    <<SetCharacterAudio None>>
     {$P}: ...
     <<jump Scene2>>
 
@@ -136,35 +162,50 @@ position: 155,164
 
 <<SetThoughtLines "All they’ll do is act like I’m being silly. They just want to look down on me." "" "Some of my friends have their own private counselors. Must be nice, they don’t have to put up with the school ones." "" "" "I can’t even explain to my own mom what the issue is. My words just don’t come out right.">>
 
+<<SetCharacterAudio None>>
 {$P}: (...I can’t do anything to ease his worries.)
 -> I’ll come along.
+    <<SetCharacterAudio Parent>>
     {$P}: If I come, maybe they’ll take it more seriously because an adult will be in the room.
+    <<SetCharacterAudio Child>>
     {$C}: I don’t think they would be any different if you were there.
+    <<SetCharacterAudio None>>
     {$P}: ...
     <<jump Scene3>>
 -> Should we hire a tutor?
+    <<SetCharacterAudio Parent>>
     {$P}: ...I know it’s a big decision, but if you really don’t like your counselors, we could look into hiring one...
+    <<SetCharacterAudio Child>>
     {$C}: I don’t want to spend money on something like that.
+    <<SetCharacterAudio None>>
     {$P}: ...
     <<jump Scene3>>
 -> I’m sorry.
+    <<SetCharacterAudio Parent>>
     {$P}: ...I’m sorry...
+    <<SetCharacterAudio Child>>
     {$C}: ..No, I’m sorry.
     {$C}: I don’t need you to come with me.
     <<SetThoughtLines "" "" "" "" "" "I don’t want her to try to talk to them. I don’t want them to look at me like I’m stupid. Like they look at her.">>
     {$C}: If you’re going to nag me about it so hard, I’ll do it. But you don’t have to come.
+    <<SetCharacterAudio Parent>>
     {$P}: ...Do you not want me there?
     <<SetThoughtLines "" "" "" "" "" "I don’t want her to try to talk to them in English.">>
+    <<SetCharacterAudio None>>
     {$C}: ...
     <<SetThoughtLines "" "" "" "" "" "But they’re not going to take me seriously if it’s just me there. I don’t want to just stand there while they stare at me.">>
+    <<SetCharacterAudio Child>>
     {$C}: You don’t have to.
     <<SetThoughtLines "" "" "" "" "" "I’ll just tell her later that I went.">>
+    <<SetCharacterAudio None>>
     {$C}: ...
     {$P}: (...He doesn’t want me there.)
     {$P}: (He doesn’t want his mother’s help.)
     {$P}: (I don’t even know if his mother can help.)
+    <<SetCharacterAudio Parent>>
     {$P}: ...I can send an email to them, then.
     <<SetThoughtLines "" "" "" "" "" "Even though I’ll just fall behind again if I have to skip lunch to meet with them. It’ll just get worse and worse.">>
+    <<SetCharacterAudio Child>>
     {$C}: It’s fine. I’ll just go talk to them in person.
     <<jump Scene4>>
 ===
@@ -177,25 +218,34 @@ position: 155,164
 <<EnableFilter "Green">>
 
 <<SetThoughtLines "" "I already skip lunch to work on homework anyways, but I just can’t finish everything…they assign so much." "There’s definitely no way that they’ll give up their own time for just one student." "" "I want to just hide away from everything until it’s all over.">>
+<<SetCharacterAudio None>>
 {$P}: (He’s normally an optimistic boy, but he sounds so defeated.)
 -> They shouldn’t be so unfair.
     {$P}: (He shouldn’t have to skip lunch just to finish his work. Teachers aren’t allowed to act like that anymore, it’s different in America.)
+    <<SetCharacterAudio Parent>>
     {$P}: It’s not fair to students like you who work so hard that your teachers won’t listen to reason. They should at least try to hear you out...if someone like you is struggling, then everyone else must be too.
     <<SetThoughtLines "" "I can’t tell her it’s my fault. She thinks it’s because they’re giving all of us too much work...She thinks it’s not my fault.">>
+    <<SetCharacterAudio None>>
     {$C}: ...
     <<SetThoughtLines "" "Nobody else is falling behind. It’s just me.">>
     {$P}: (Why is it just him...Is he struggling with the content?)
+    <<SetCharacterAudio Parent>>
     {$P}: Or if it’s just that the work is hard, we can hire tutors, or send you to prep school.
+    <<SetCharacterAudio None>>
     {$P}: (What does he need from me?)
     <<SetThoughtLines "" "It’s not going to work.">>
     {$C}: ...
     <<SetThoughtLines "" "I have too much stuff to do. It feels like I’m drowning.">>
+    <<SetCharacterAudio Child>>
     {$C}: No...you don’t have to spend money on that kind of thing.
     <<SetThoughtLines "" "I can’t handle all these clubs and school and making my portfolio.">>
     {$C}: I’ll just study harder.
+    <<SetCharacterAudio None>>
     {$P}: (Portfolio? What is a portfolio? Is it for college applications?)
+    <<SetCharacterAudio Parent>>
     {$P}: {$C}...
     <<SetThoughtLines "" "All of my other classmates are nearly done, but I can barely finish my first piece.">>
+    <<SetCharacterAudio None>>
     {$C}: ...
     <<SetThoughtLines "" "I don’t have enough time. I can’t do this.">>
     {$C}: ...
@@ -203,14 +253,21 @@ position: 155,164
     {$C}: ...
     <<jump Scene5>>
 -> Go with your friends.
+    <<SetCharacterAudio Parent>>
     {$P}: Can your friends go with you? So you’re not alone.
+    <<SetCharacterAudio Child>>
     {$C}: They have other clubs during lunch.
+    <<SetCharacterAudio None>>
     {$P}: ...
     <<jump Scene4>>
 -> Want to skip school?
+    <<SetCharacterAudio None>>
     {$P}: (Maybe he needs some time alone.)
+    <<SetCharacterAudio Parent>>
     {$P}: Do you want to stay home for a little while? I can call you in sick so you can catch up on your work.
+    <<SetCharacterAudio Child>>
     {$C}: That would just make me fall behind in my classwork.
+    <<SetCharacterAudio None>>
     {$P}: ...
     <<jump Scene4>>
 
@@ -225,49 +282,71 @@ position: 155,164
 
 <<SetThoughtLines "" "I can’t stand going on like this." "Maybe I’ll become a dropout. Maybe none of this even matters." "" "I don’t want to be here. I don’t want to talk to mom about this.">>
 
+<<SetCharacterAudio None>>
 {$P}: (I can’t help but be overwhelmed by how upset he is.)
 -> Just wait it out.
+    <<SetCharacterAudio Parent>>
     {$P}: {$C}, you only need to hold on a little longer until the year ends...
+    <<SetCharacterAudio Child>>
     {$C}: ...But we’re talking about right now, not the future.
+    <<SetCharacterAudio None>>
     {$P}: ...
     <<jump Scene5>>
 -> You need to graduate.
+    <<SetCharacterAudio Parent>>
     {$P}: No matter what, you at least have to finish school.
     <<SetThoughtLines "" "" "Even if it means I have to drop all my clubs, I’ll at least graduate...">>
+    <<SetCharacterAudio Child>>
     {$C}: What are you talking about? Of course I’ll finish.
+    <<SetCharacterAudio None>>
     {$P}: ...
+    <<SetCharacterAudio Parent>>
     {$P}: (I didn’t mean for him to think that way.)
     <<jump Scene5>>
 -> Please listen to me.
+    <<SetCharacterAudio Parent>>
     {$P}: {$C}! Are you listening?
+    <<SetCharacterAudio Child>>
     {$C}: !
     <<SetThoughtLines "" "" "" "" "I wish I could be like everyone else.">>
+    <<SetCharacterAudio None>>
     {$C}: ...
     <<SetThoughtLines "" "" "" "" "My friends can do everything. Their parents tell them to do whatever they want.">>
+    <<SetCharacterAudio Child>>
     {$C}: ...Yeah
     <<SetThoughtLines "" "" "" "" "But I can’t drop these stupid engineering classes. What would mom think?">>
+    <<SetCharacterAudio None>>
     {$C}: ...
     {$P}: (Why was he talking about a portfolio earlier? ...Does he want to learn how to draw?)
+    <<SetCharacterAudio Parent>>
     {$P}: Do you just have too much work?
+    <<SetCharacterAudio Child>>
     {$C}: ...A little.
     <<SetThoughtLines "" "" "" "" "Even though I don’t even have the time to research if art colleges are the right way to go. I just don’t know.">>
     {$C}: I’m just trying out a new hobby, so I’m a little busy right now. It’ll be easier next semester.
     <<SetThoughtLines "" "" "" "" "Why can’t I have parents who can just tell me if this or that college is good or bad?">>
+    <<SetCharacterAudio None>>
     {$C}: ...
     {$P}: (Did I really know this little about his life?)
+    <<SetCharacterAudio Parent>>
     {$P}: I’m just worried about your future.
     <<SetThoughtLines "" "" "" "" "She’s talking about the future when I don’t even know how to sign up for classes next year.">>
+    <<SetCharacterAudio None>>
     {$C}: ...
     <<SetThoughtLines "" "" "" "" "My friends have their parents do it for them. They can try out art classes whenever they want.">>
     {$C}: ...
     <<SetThoughtLines "" "" "" "" "It must be so easy. Why is it easy for them and not for me?">>
+    <<SetCharacterAudio Child>>
     {$C}: If my future wasn’t engineering...
+    <<SetCharacterAudio Parent>>
     {$P}: What do you mean, if it wasn’t?
+    <<SetCharacterAudio None>>
     {$P}: (He doesn’t want to quit engineering.)
     {$P}: (He loved it so much in middle school. He begged me to sign him up for those classes at the community center.)
     {$P}: (I had to do it through Google Translate, but I was so happy he took after me.)
-    {$P}: He can’t mean that.
+    {$P}: (He can’t mean that.)
     <<SetThoughtLines "" "" "" "" "I just wanted to try doing something else for once. I didn’t even know if I’d like it at first... I just wanted to give it a chance.">>
+    <<SetCharacterAudio Child>>
     {$C}: ...Nevermind. I’m close to graduating anyways.
     <<jump Scene6>>
 
@@ -281,7 +360,101 @@ position: 155,164
 <<EnableFilter "Blue">>
 
 <<SetThoughtLines "She’s not an artist. She doesn’t get how it feels, so she’s going to call it useless." "I’m never going to get anywhere with this." "" "I’ve never even shown my portfolio to her. I don’t think she cares.">>
-{$P}: Is doing art that important to him?
+<<SetCharacterAudio None>>
+{$P}: (Is doing art that important to him?)
+-> I don’t understand.
+    <<SetCharacterAudio Parent>>
+    {$P}: I won’t judge you, I just don’t know what you mean.
+    <<SetCharacterAudio Child>>
+    {$C}: It doesn’t matter anymore. Don’t worry about it.
+    <<SetCharacterAudio None>>
+    {$P}: ...
+    <<jump Scene6>>
+-> Hard work pays off.
+    <<SetCharacterAudio Parent>>
+    {$P}: If you’re putting work into it, it might look good when you’re applying to college.
+    <<SetCharacterAudio Child>>
+    {$C}: I guess.
+    <<SetCharacterAudio None>>
+    {$P}: ...
+    <<jump Scene6>>
+-> I care about your hobby.
+    <<SetCharacterAudio Parent>>
+    {$P}: {$C}, I don’t want you to have to give up your hobbies. I care about your hobbies too, even if I don’t understand them...
+    {$P}: You’re such a hardworking child. I’m sure if you just try, you can figure everything out.
+    {$P}: And we can look at what you’ve been working on later together.
+    <<SetCharacterAudio Child>>
+    {$C}: I...
+    {$C}: But I don’t want to figure everything out. I don’t want to only do what I want later.
+    {$C}: Why do you always tell me that?
+    {$C}: Why is it always you telling me to do something, then I have to go look it up, then sign up, then finish it all on my own?
+    <<SetCharacterAudio None>>
+    {$P}: (He’s angry at me. Because I’m useless here.)
+    {$P}: (Even though I used to win awards for debate...)
+    <<SetCharacterAudio Parent>>
+    {$P}: ...I’m sorry I can’t help more, but I can’t help not understanding things...
+    <<SetCharacterAudio Child>>
+    {$C}: I don’t care about that!
+    <<SetThoughtLines "" "" "" "Some people I know have their parents do their work for them.">>
+    {$C}: I don’t care if I have to translate everything. Can’t you just sit in my room while I work, or watch while I sign up for classes?
+    <<SetThoughtLines "" "" "" "I don’t want that, but...">>
+    <<SetCharacterAudio None>>
+    {$C}: ...
+    <<SetThoughtLines "" "" "" "It sounds nice to sit next to your mom while doing schoolwork.">>
+    {$C}: ...
+    <<SetCharacterAudio Parent>>
+    {$P}: ...But I can’t help much with that kind of academic stuff, you know.
+    <<SetCharacterAudio None>>
+    {$P}: (Even though I loved my engineering classes when I was his age.)
+    {$P}: (Even though I wanted to go to college so badly.)
+    <<SetCharacterAudio Child>>
+    {$C}: I don’t need you to help me. I can get the notes from my friends, or talk to the teacher again...
+    {$C}: I don’t care about what the subject is.
+    <<SetThoughtLines "" "" "" "I just liked those classes when I was a kid because you would always do them with me.">>
+    {$C}: Mom, I don’t... even really like engineering.
+    <<SetCharacterAudio None>>
+    {$P}: ...
+    {$P}: ...
+    {$P}: (...I’m getting the feeling that I haven’t been looking at {$C} properly for a long time.)
+    <<SetCharacterAudio Parent>>
+    {$P}: Then what do you want to do?
+    <<jump Scene7>>
 
+===
 
+title: Scene7
+position: 155,164
+---
+<<DisableFilter "Green">>
+<<DisableFilter "Red">>
+<<DisableFilter "Blue">>
+
+<<SetThoughtLines "">>
+<<SetCharacterAudio Child>>
+{$C}: I don’t know...
+{$C}: I don’t want to decide right now. I know I’m graduating soon, but... don’t I still have time left?
+
+<<EnableFilter "Green">>
+<<EnableFilter "Red">>
+<<EnableFilter "Blue">>
+
+<<SetThoughtLines "">>
+-> No matter what decision you make, I’ll promise to hear it out.
+    <<SetThoughtLines "" "" "I just want her to understand. I just want her to support me...">>
+    <<SetCharacterAudio None>>
+    {$C}: ...
+    <<jump Scene7>>
+-> Grades can always be changed.
+    <<SetThoughtLines "" "" "" "" "Will she still listen to me if I show her my portfolio? Will she get mad at me if I drop some of my engineering clubs?">>
+    <<SetCharacterAudio Child>>
+    {$C}: Even if my grades end up like this again? Or worse?
+    <<SetCharacterAudio Parent>>
+    {$P}: We can handle it if it happens.
+    <<jump Scene7>>
+-> All I’ve ever wanted is for you to be happy.
+    <<SetThoughtLines "" "" "" "" "" "" "I’ve wanted to hear these words so many times.">>
+    <<SetCharacterAudio Child>>
+    {$C}: ...Do you mean it?
+    <<SetCharacterAudio Parent>>
+    {$P}: (That’s all any parent wants for their child.)
 ===
